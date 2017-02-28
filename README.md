@@ -29,4 +29,5 @@ Author Information
 ------------------
 
 Base on work of Valentino Gagliardi - Icinga Dev Team
+
 Hacked by Veros Kaplan - https://github.com/VerosK/ansible-icinga2-role
