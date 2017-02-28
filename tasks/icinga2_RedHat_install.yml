@@ -1,0 +1,57 @@
+---
+- name: Install package requirements
+  yum:
+    name: "{{ item.package }}"
+    state: present
+  with_items: '{{ icinga2_requirements }}'
+
+- name: Install Icinga2 Yum Key
+  rpm_key: key={{ icinga2_key }} 
+           state=present
+
+- name: Get Icinga2 Yum Repo (Fedora)
+  get_url: url='{{ icinga2_url_yum_fedora }}' 
+           dest={{ icinga2_repo_yum }}
+  when: ansible_distribution == 'Fedora'
+
+- name: Get Icinga2 Yum Repo on RedHat OS family
+  get_url: url='{{ icinga2_url_yum }}' 
+           dest={{ icinga2_repo_yum }}
+
+- name: Install Icinga2 core on RedHat OS family
+  yum: name={{ item.package }}  state={{ item.state|default("present") }}
+  with_items: '{{ icinga2_core_yum }}'
+
+- name: Install Icinga2 classicui on RedHat OS family
+  yum: name={{ item.package }}  state={{ item.state|default("present") }}
+  with_items: '{{ icinga2_classic_yum }}'
+  when: icinga2_with_classic_ui
+
+- name: Install Icinga2 postgres IDO on RedHat OS family
+  yum: name={{ item.package }}  state={{ item.state|default("present") }}
+  with_items: '{{ icinga2_ido_postgres_yum }}'
+  when: icinga2_ido_with_postgres
+
+- name: Install Icinga2 web2 on RedHat OS family
+  yum: name={{ item.package }}  state={{ item.state|default("present") }}
+  with_items: '{{ icinga2_web2_yum }}'
+  when: icinga2_with_web2
+
+- name: Install VIM syntax
+  yum:
+    name: icinga2-vimsyntax
+    state: installed
+  when: icinga2_install_vimsyntax
+  register: _has_vimsyntax
+  ignore_errors: true
+
+- include: icinga2_RedHat_upload_vimsyntax.yml
+  static: true
+  when: _has_vimsyntax|failed and icinga2_upload_vimsyntax_rpm
+
+- name: Enable Icinga2
+  service:
+    name: icinga2
+    enabled: yes
+    state: started    # FIXME: enable when requested
+  ignore_errors: yes

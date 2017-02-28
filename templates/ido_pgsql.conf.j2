@@ -1,0 +1,11 @@
+/** {{ ansible_managed }}
+ */
+
+library "db_ido_pgsql"
+
+object IdoPgsqlConnection "ido-pgsql" {
+  user = "{{ icinga2_ido_pg_user }}"
+  password = "{{ icinga2_ido_pg_password  }}"
+  host = "localhost"
+  database = "{{ icinga2_ido_pg_db }}"
+}

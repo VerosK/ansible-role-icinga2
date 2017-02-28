@@ -1,0 +1,94 @@
+---
+# defaults file for icinga2-ansible-no-ui
+# based on https://github.com/Icinga/icinga2-ansible/blob/master/icinga2-ansible-no-ui/defaults/main.yml
+
+icinga2_key: "http://packages.icinga.org/icinga.key"
+icinga2_debmon_key: "http://debmon.org/debmon/repo.key"
+
+icinga2_deb_repos:
+ - { repo: "deb http://packages.icinga.org/{{ ansible_distribution|lower }} icinga-{{ ansible_distribution_release }} main" }
+ - { repo: "deb-src http://packages.icinga.org/{{ ansible_distribution|lower }} icinga-{{ ansible_distribution_release }} main" }
+icinga2_debmon_repo: "deb http://debmon.org/debmon debmon-{{ ansible_distribution_release }} main"
+
+icinga2_pkg:
+ - { package: "icinga2" }
+ - { package: "nagios-plugins" }
+
+icinga2_requirements:
+  - { package: "gpg" }
+  - { package: "epel-release" }
+
+icinga2_url_yum: "http://packages.icinga.org/epel/ICINGA-release.repo"
+icinga2_url_yum_fedora: "http://packages.icinga.org/fedora/ICINGA-release.repo"
+icinga2_repo_yum: "/etc/yum.repos.d/ICINGA-release.repo"
+
+# almost no tests
+icinga2_plugins_packages: 'nagios-plugins'
+# or
+# icinga2_plugins_packages: 'nagios-plugins-all'
+
+icinga2_core_yum:
+ - { package: "icinga2" }
+ - { package: "icinga2-selinux" }
+ - { package: "{{ icinga2_plugins_packages }}" }
+
+icinga2_classic_yum:
+ - { package: "icinga2-classicui-config" }
+ - { package: "icinga-gui" }
+
+icinga2_ido_postgres_yum:
+ - { package: "icinga2-ido-pgsql" }
+
+icinga2_web2_yum:
+ - { package: "icingaweb2" }
+ - { package: "icingaweb2-selinux" }
+ - { package: "icingacli" }
+
+icinga2_main_conf: "/etc/icinga2/icinga2.conf"
+icinga2_conf_d: "/etc/icinga2/conf.d"
+
+
+icinga2_with_classic_ui: false
+icinga2_with_web2: false
+
+icinga2_ido_with_postgres: false
+icinga2_ido_pg_db: icinga2
+icinga2_ido_pg_user: icinga2
+icinga2_ido_pg_password: secret-password
+
+icingaweb2_with_postgres: false
+icingaweb2_pg_db: icingaweb2
+icingaweb2_pg_user: icingaweb2
+icingaweb2_pg_password: random
+
+# default icinga2 features
+__icinga2_features:
+  checker: on
+  command: off
+  mainlog: on
+  notification: off
+  statusdata: off
+
+# icinga2 features
+icinga2_features:
+  checker: on
+
+icinga2_features_available_dir: /etc/icinga2/features-available
+icinga2_features_enabled_dir: /etc/icinga2/features-enabled
+
+icinga2_install_vimsyntax: true
+icinga2_upload_vimsyntax_rpm: icinga2-vimsyntax-0-1.noarch.rpm
+
+icinga2_conf_global: |
+   include "constants.conf"
+   include "zones.conf"
+   include <itl>
+   include <plugins>
+   include "features-enabled/*.conf"
+   include_recursive "conf.d"
+   # note: "zones.d" are included automagically
+
+icinga2_check_commands: {}
+
+# no cluster endpoints
+icinga2_cluster_endpoints: {}

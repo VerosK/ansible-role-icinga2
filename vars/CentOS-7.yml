@@ -1,0 +1,14 @@
+---
+icinga2_requirements:
+  - { package: "gpg" }
+  - { package: "epel-release" }
+  - { package: "vim-enhanced" }
+  - { package: "rlwrap" }
+  - { package: "bash-completion" }
+
+
+icinga2_syntax: /usr/share/doc/icinga2
+
+icinga2_supported_os: True
+
+icinga2_vimsyntax: icinga2-vimsyntax-0-1.noarch.rpm
