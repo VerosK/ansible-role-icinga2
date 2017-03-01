@@ -85,7 +85,8 @@ icinga2_conf_global: |
    include <itl>
    include <plugins>
    include "features-enabled/*.conf"
-   include_recursive "conf.d"
+   # prepared for satellite setup.
+   # include_recursive "conf.d" 
    # note: "zones.d" are included automagically
 
 icinga2_check_commands: {}
