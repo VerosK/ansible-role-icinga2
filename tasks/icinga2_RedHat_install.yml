@@ -22,11 +22,6 @@
   yum: name={{ item.package }}  state={{ item.state|default("present") }}
   with_items: '{{ icinga2_core_yum }}'
 
-- name: Install Icinga2 classicui on RedHat OS family
-  yum: name={{ item.package }}  state={{ item.state|default("present") }}
-  with_items: '{{ icinga2_classic_yum }}'
-  when: icinga2_with_classic_ui
-
 - name: Install Icinga2 postgres IDO on RedHat OS family
   yum: name={{ item.package }}  state={{ item.state|default("present") }}
   with_items: '{{ icinga2_ido_postgres_yum }}'
