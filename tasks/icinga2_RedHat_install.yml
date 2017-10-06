@@ -32,18 +32,6 @@
   with_items: '{{ icinga2_web2_yum }}'
   when: icinga2_with_web2
 
-- name: Install VIM syntax
-  yum:
-    name: icinga2-vimsyntax
-    state: installed
-  when: icinga2_install_vimsyntax
-  register: _has_vimsyntax
-  ignore_errors: true
-
-- include: icinga2_RedHat_upload_vimsyntax.yml
-  static: true
-  when: _has_vimsyntax|failed and icinga2_upload_vimsyntax_rpm
-
 - name: Enable Icinga2
   service:
     name: icinga2

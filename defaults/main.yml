@@ -13,6 +13,7 @@ icinga2_debmon_repo: "deb http://debmon.org/debmon debmon-{{ ansible_distributio
 icinga2_pkg:
  - { package: "icinga2" }
  - { package: "nagios-plugins" }
+ - { package: "vim-icinga2" }
 
 icinga2_requirements:
   - { package: "gpg" }
@@ -69,9 +70,6 @@ icinga2_features:
 
 icinga2_features_available_dir: /etc/icinga2/features-available
 icinga2_features_enabled_dir: /etc/icinga2/features-enabled
-
-icinga2_install_vimsyntax: true
-icinga2_upload_vimsyntax_rpm: icinga2-vimsyntax-0-1.noarch.rpm
 
 icinga2_conf_global: |
    include "constants.conf"
