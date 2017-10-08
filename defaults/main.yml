@@ -36,11 +36,6 @@ icinga2_core_yum:
 icinga2_ido_postgres_yum:
  - { package: "icinga2-ido-pgsql" }
 
-icinga2_web2_yum:
- - { package: "icingaweb2" }
- - { package: "icingaweb2-selinux" }
- - { package: "icingacli" }
-
 icinga2_main_conf: "/etc/icinga2/icinga2.conf"
 icinga2_conf_d: "/etc/icinga2/conf.d"
 
@@ -51,10 +46,25 @@ icinga2_ido_pg_db: icinga2
 icinga2_ido_pg_user: icinga2
 icinga2_ido_pg_password: secret-password
 
-icingaweb2_with_postgres: false
-icingaweb2_pg_db: icingaweb2
-icingaweb2_pg_user: icingaweb2
-icingaweb2_pg_password: random
+icinga2_ido_cleanup: {}
+
+# set icinga2_ido_cleanup: "{{ icinga2_ido_cleanup_1year }}"
+icinga2_ido_cleanup_1year:
+  acknowledgements_age: 365d
+  commenthistory_age: 365d
+  contactnotifications_age: 365d
+  contactnotificationmethods_age: 365d
+  downtimehistory_age: 365d
+  eventhandlers_age: 365d
+  externalcommands_age: 365d
+  flappinghistory_age: 365d
+  hostchecks_age: 365d
+  logentries_age: 365d
+  notifications_age: 365d
+  processevents_age: 365d
+  statehistory_age: 365d
+  servicechecks_age: 365d
+  systemcommands_age: 365d
 
 # default icinga2 features
 __icinga2_features:

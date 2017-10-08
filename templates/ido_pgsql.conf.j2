@@ -8,4 +8,10 @@ object IdoPgsqlConnection "ido-pgsql" {
   password = "{{ icinga2_ido_pg_password  }}"
   host = "localhost"
   database = "{{ icinga2_ido_pg_db }}"
+
+  cleanup = {
+  {% for k,v in icinga2_ido_cleanup.items() %}
+  {{ k }} = {{ v }}
+  {% endfor %}
+  }
 }

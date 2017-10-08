@@ -30,37 +30,6 @@
   become: true
   when: icinga2_ido_with_postgres
 
-- name: Create icinga ido pg_database
-  postgresql_db:
-    name: '{{ icinga2_ido_pg_db }}'
-    encoding: 'UTF-8'
-    template: 'template0'
-    lc_ctype: 'en_US.utf8'
-    lc_collate: 'en_US.utf8'
-    owner: '{{ icinga2_ido_pg_user }}'
-  become_user: postgres
-  become: true
-  when: icinga2_ido_with_postgres
-  register: _icinga2_pg_ido_db
-
-- name: Create IDO pg_database tables
-  shell: psql -U {{ icinga2_ido_pg_user }} {{ icinga2_ido_pg_db }} -f /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
-  environment:
-    PGPASSWORD: '{{ icinga2_ido_pg_password }}'
-  become_user: postgres
-  become: yes
-  when: _icinga2_pg_ido_db|changed
-  notify:
-    - restart icinga2
-
-- name: Set-up IDO configuration
-  template:
-    src: 'ido_pgsql.conf.j2'
-    dest: '{{icinga2_features_enabled_dir}}/ido-pgsql.conf'
-  when: icinga2_ido_with_postgres
-  notify:
-    - restart icinga2
-
 - name: "Update icinga2 features"
   icinga2_features:
     features: '{{ __icinga2_features|combine(icinga2_features) }}'

@@ -27,11 +27,6 @@
   with_items: '{{ icinga2_ido_postgres_yum }}'
   when: icinga2_ido_with_postgres
 
-- name: Install Icinga2 web2 on RedHat OS family
-  yum: name={{ item.package }}  state={{ item.state|default("present") }}
-  with_items: '{{ icinga2_web2_yum }}'
-  when: icinga2_with_web2
-
 - name: Enable Icinga2
   service:
     name: icinga2
