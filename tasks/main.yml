@@ -29,5 +29,9 @@
   include: icinga2_setup_ido.yml
   when: icinga2_ido_with_postgres
 
+- name: "Fix ping capabilities to enable check_ping tests"
+  include: ping-capabilities.yml
+  when: icinga2_ping_fix_capabilities
+
 - name: Start Icinga2 after install
   service: name=icinga2 enabled=yes state=running

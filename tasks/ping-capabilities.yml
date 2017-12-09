@@ -1,0 +1,5 @@
+- name: Update ping capabilities
+  capabilities:
+    path: '{{ icinga2_ping_binary }}'
+    capability: '{{ icinga2_ping_capabilities }}'
+    state: present
