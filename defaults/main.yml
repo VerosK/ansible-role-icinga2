@@ -98,5 +98,5 @@ icinga2_cluster_endpoints: {}
 
 # update ping capabilities?
 icinga2_ping_fix_capabilities: True
-icinga2_ping_capabilities: cap_net_raw+epo
+icinga2_ping_capabilities: cap_net_raw+ep
 icinga2_ping_binary: /usr/bin/ping
