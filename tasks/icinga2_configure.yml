@@ -21,6 +21,14 @@
   notify: 
    - restart icinga2
 
+- name:
+  template:
+    src: apiusers.conf.j2
+    dest: '{{ icinga2_apiusers_conf }}'
+    owner: '{{ icinga2_user }}'
+    mode: 0600
+  tags: icinga2_apiusers
+
 - name: Create icinga ido pg_user
   postgresql_user:
     name: '{{ icinga2_ido_pg_user }}'

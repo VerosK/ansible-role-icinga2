@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+
+{% for user,config in icinga2_apiusers.items() %}
+object ApiUser "{{ user }}" {
+    {% if config.password is defined %}
+    password = "{{ config.password }}"
+    {% endif %}
+    permissions = [
+    {% for obj in config.permissions|default(icinga2_apiuser_default_permissions) %}
+        "{{ obj }}",
+    {% endfor %}
+    {% if config.raw_permissions is defined %}
+        # permissions from icinga2_apiusers.raw_permission
+        {{ config.raw_permissions|indent(4) }}
+    {% endif %}
+    ]
+}
+{% endfor %}
