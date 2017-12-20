@@ -21,7 +21,7 @@
   notify: 
    - restart icinga2
 
-- name:
+- name: "Deploy apiusers.conf"
   template:
     src: apiusers.conf.j2
     dest: '{{ icinga2_apiusers_conf }}'
