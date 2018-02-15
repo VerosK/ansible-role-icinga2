@@ -6,9 +6,6 @@ icinga2_requirements:
   - { package: "rlwrap" }
   - { package: "bash-completion" }
 
-
-icinga2_syntax: /usr/share/doc/icinga2
+icinga2_user: icinga
 
 icinga2_supported_os: True
-
-icinga2_vimsyntax: icinga2-vimsyntax-0-1.noarch.rpm

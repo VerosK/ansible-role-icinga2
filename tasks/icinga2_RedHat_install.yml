@@ -27,7 +27,7 @@
   with_items: '{{ icinga2_ido_postgres_yum }}'
   when: icinga2_ido_with_postgres
 
-- name: Enable Icinga2
+- name: Enable Icinga2 service
   service:
     name: icinga2
     enabled: yes
