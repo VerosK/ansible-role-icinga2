@@ -6,6 +6,8 @@ icinga2_requirements:
   - { package: "rlwrap" }
   - { package: "bash-completion" }
 
-icinga2_user: icinga
+__icinga2_user: icinga
 
 icinga2_supported_os: True
+
+__icinga2_ping_binary: /usr/bin/ping

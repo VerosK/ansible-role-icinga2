@@ -14,6 +14,11 @@
   fail: msg="OS {{ ansible_distribution }} {{ ansible_distribution_major_version }} is unsupported"
   when: not icinga2_supported_os
 
+- name: Set variables variables
+  set_fact:
+    icinga2_user: '{{ icinga2_user|default(__icinga2_user) }}'
+    icinga2_ping_binary: '{{ icinga2_ping_binary|default(__icinga2_ping_binary) }}'
+
 - name: "Run Debian specific installation"
   include: icinga2_Debian_install.yml
   when: ansible_os_family == 'Debian'

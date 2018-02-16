@@ -10,11 +10,6 @@ icinga2_deb_repos:
  - { repo: "deb-src http://packages.icinga.org/{{ ansible_distribution|lower }} icinga-{{ ansible_distribution_release }} main" }
 icinga2_debmon_repo: "deb http://debmon.org/debmon debmon-{{ ansible_distribution_release }} main"
 
-icinga2_pkg:
- - { package: "icinga2" }
- - { package: "nagios-plugins" }
- - { package: "vim-icinga2" }
-
 icinga2_requirements:
   - { package: "gpg" }
   - { package: "epel-release" }
@@ -130,4 +125,5 @@ icinga2_apiusers: {}
 # Should be update /bin/ping capabilities?
 icinga2_ping_fix_capabilities: True
 icinga2_ping_capabilities: cap_net_raw+ep
-icinga2_ping_binary: /bin/ping
+# default icinga2 binary
+# icinga2_ping_binary: /bin/ping

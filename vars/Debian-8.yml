@@ -1,5 +1,7 @@
 ---
 icinga2_supported_os: True
 
-icinga2_user: nagios
 icinga2_package_key: https://packages.icinga.com/icinga.key
+
+__icinga2_user: nagios
+__icinga2_ping_binary: /bin/ping
