@@ -4,7 +4,7 @@ Ansible role to install Icinga2 Headless alongside Plugins
 
 ## Requirements
 
-EPEL
+EPEL is required on CentOS.
 
 ## Example Playbook
 
@@ -12,7 +12,7 @@ EPEL
 ---
 - hosts: icinga
   roles:
-   - role: icinga2
+   - role: VerosK.icinga2
 ```
 
 Role Variables
@@ -28,6 +28,6 @@ GNU General Public License Version 2
 Author Information
 ------------------
 
-Base on work of Valentino Gagliardi - Icinga Dev Team
+Based on work of Valentino Gagliardi - Icinga Dev Team
 
-Hacked by Veros Kaplan - https://github.com/VerosK/ansible-icinga2-role
+Hacked by Veros Kaplan - https://github.com/VerosK/ansible-role-icinga2
