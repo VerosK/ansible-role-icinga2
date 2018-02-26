@@ -1,3 +1,12 @@
+- name: Create icinga ido pg_user
+  postgresql_user:
+    name: '{{ icinga2_ido_pg_user }}'
+    password: '{{ icinga2_ido_pg_password }}'
+    role_attr_flags: NOCREATEDB,NOSUPERUSER
+  become_user: postgres
+  become: true
+  when: icinga2_ido_with_postgres
+
 - name: Create icinga ido pg_database
   postgresql_db:
     name: '{{ icinga2_ido_pg_db }}'
@@ -12,9 +21,12 @@
   register: _icinga2_pg_ido_db
 
 - name: Create IDO pg_database tables
-  shell: psql -U {{ icinga2_ido_pg_user }} {{ icinga2_ido_pg_db }} -f /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
+  shell: psql {{ icinga2_ido_pg_db }} -f /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
   environment:
     PGPASSWORD: '{{ icinga2_ido_pg_password }}'
+    PGUSER: '{{ icinga2_ido_pg_user }}'
+    PGHOST: '{{ icinga2_ido_pg_host }}'
+    PGAPPNAME: '{{ icinga2_ido_pg_host }}'
   become_user: postgres
   become: yes
   when: _icinga2_pg_ido_db|changed

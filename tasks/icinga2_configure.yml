@@ -29,15 +29,6 @@
     mode: 0600
   tags: icinga2_apiusers
 
-- name: Create icinga ido pg_user
-  postgresql_user:
-    name: '{{ icinga2_ido_pg_user }}'
-    password: '{{ icinga2_ido_pg_password }}'
-    role_attr_flags: NOCREATEDB,NOSUPERUSER
-  become_user: postgres
-  become: true
-  when: icinga2_ido_with_postgres
-
 - name: "Update icinga2 features"
   icinga2_features:
     features: '{{ __icinga2_features|combine(icinga2_features) }}'
