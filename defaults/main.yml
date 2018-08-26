@@ -126,4 +126,4 @@ icinga2_apiusers: {}
 icinga2_ping_fix_capabilities: True
 icinga2_ping_capabilities: cap_net_raw=ep
 # default icinga2 binary
-# icinga2_ping_binary: /bin/ping
+icinga2_ping_binary: /usr/bin/ping
