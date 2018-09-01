@@ -28,6 +28,8 @@
     owner: '{{ icinga2_user }}'
     mode: 0600
   tags: icinga2_apiusers
+  notify:
+   - restart icinga2
 
 - name: "Update icinga2 features"
   icinga2_features:
