@@ -13,5 +13,9 @@ galaxy_info:
       versions:
         - jessie
         - stretch
+    - name: Ubuntu
+      version:
+        - xenial
+        - bionic
   galaxy_tags:
     - web

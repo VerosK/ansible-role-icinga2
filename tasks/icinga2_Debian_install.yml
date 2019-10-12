@@ -13,7 +13,7 @@
 
 - name: Get Icinga2 Apt Repos for Debian OS family
   apt_repository:
-    repo: '{{ item.repo }}'
+    repo: '{{ item }}'
     update_cache: yes
     state: present
   loop: '{{ icinga2_deb_repos }}'
@@ -26,12 +26,13 @@
     state: present
   when: ansible_distribution == 'Debian'
 
-- name: Install Icinga2 on Debian OS family
+- name: Install Icinga2 packages on Debian OS family
   apt:
-    pkg: '{{ icinga2_core_deb_packages }}'
+    pkg: '{{ item.package }}'
+    state: '{{ item.state|default("present") }}'
     update_cache: yes
-    state: present
     install_recommends: no
+  loop: '{{ icinga2_core_deb_packages }}'
 
 - name: Install Icinga2 postgres IDO on Debian OS family
   apt:

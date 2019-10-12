@@ -26,7 +26,8 @@ icinga2_plugins_packages:
 # icinga2_plugins_packages:
 #     - nagios-plugins-all
 
-icinga2_user: icinga
+# You can define this
+#icinga2_user: icinga
 
 icinga2_core_yum_packages:
  - package: "icinga2"
@@ -36,7 +37,6 @@ icinga2_core_yum_packages:
 
 icinga2_core_deb_packages:
  - package: "icinga2"
- - package: "icinga2-selinux"
  - package: "vim-icinga2"
  - package: "{{ icinga2_plugins_packages }}"
 
@@ -130,5 +130,5 @@ icinga2_apiusers: {}
 
 
 # Should be update /bin/ping capabilities?
-icinga2_ping_fix_capabilities: True
+icinga2_ping_fix_capabilities: False
 icinga2_ping_capabilities: cap_net_raw=ep
