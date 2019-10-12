@@ -29,14 +29,14 @@
     PGAPPNAME: '{{ icinga2_ido_pg_host }}'
   become_user: postgres
   become: yes
-  when: _icinga2_pg_ido_db|changed
+  when: _icinga2_pg_ido_db.changed
   notify:
     - restart icinga2
 
 - name: Set-up IDO configuration
   template:
     src: 'ido_pgsql.conf.j2'
-    dest: '{{icinga2_features_enabled_dir}}/ido-pgsql.conf'
+    dest: '{{ icinga2_features_enabled_dir }}/ido-pgsql.conf'
   when: icinga2_ido_with_postgres
   tags: icinga2_ido_cleanup
   notify:

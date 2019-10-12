@@ -7,8 +7,8 @@
     owner: root
     group: root
     mode: 0644
-  notify: 
-   - restart icinga2
+  notify:
+    - restart icinga2
 
 - name: Copy Check Commands Configuration
   template:
@@ -18,8 +18,8 @@
     owner: root
     group: root
     mode: 0644
-  notify: 
-   - restart icinga2
+  notify:
+    - restart icinga2
 
 - name: "Deploy apiusers.conf"
   template:
@@ -29,7 +29,7 @@
     mode: 0600
   tags: icinga2_apiusers
   notify:
-   - restart icinga2
+    - restart icinga2
 
 - name: "Update icinga2 features"
   icinga2_features:

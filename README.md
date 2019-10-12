@@ -3,7 +3,8 @@
 Ansible role to install Icinga2 daemon and plugins.  
 
 It can optionally setup PostgreSQL IDO on Icinga host.
-To setup IDO on separate host, use role [`VerosK.icinga2-ido-pgsql`][ido-role]. 
+To setup IDO on separate host, use role [`VerosK.icinga2-ido-pgsql`][ido-role]
+and use . 
 
 ## Requirements
 
@@ -32,4 +33,4 @@ Author Information
 Based on work of Valentino Gagliardi from Icinga Dev Team. Updated by [Veros Kaplan][verosk]
 
 [ido-role]: https://github.com/VerosK/ansible-role-icinga2-ido-pgsql
-[verosk]: https://github.com/VerosK/ansible-role-icinga2-ido-pgsql
+[verosk]: https://github.com/VerosK/
