@@ -21,7 +21,7 @@
   register: _icinga2_pg_ido_db
 
 - name: Create IDO pg_database tables
-  shell: psql {{ icinga2_ido_pg_db }} -f /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
+  command: psql {{ icinga2_ido_pg_db }} -f /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
   environment:
     PGPASSWORD: '{{ icinga2_ido_pg_password }}'
     PGUSER: '{{ icinga2_ido_pg_user }}'
