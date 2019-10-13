@@ -30,7 +30,7 @@
     PGAPPNAME: '{{ icinga2_ido_pg_host }}'
   become_user: postgres
   become: true
-  when: _icinga2_pg_ido_db.changed
+  when: _icinga2_pg_ido_db.changed  # noqa 503
   notify:
     - restart icinga2
 
