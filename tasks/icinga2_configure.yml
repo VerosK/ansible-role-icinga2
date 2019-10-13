@@ -3,7 +3,7 @@
   template:
     src: icinga2.conf.j2
     dest: '{{ icinga2_main_conf }}'
-    backup: yes
+    backup: true
     owner: root
     group: root
     mode: 0644
@@ -14,7 +14,7 @@
   template:
     src: icinga2_check_commands.j2
     dest: '{{ icinga2_conf_d }}/check_commands.conf'
-    backup: yes
+    backup: true
     owner: root
     group: root
     mode: 0644

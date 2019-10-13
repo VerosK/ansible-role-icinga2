@@ -3,12 +3,12 @@
   include_vars: "{{ item }}"
   with_first_found:
     - files:
-      - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-      - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-      - "{{ ansible_distribution }}.yml"
-      - "{{ ansible_os_family }}.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
       paths:
-      - ../vars
+        - ../vars
 
 - name: Warn if OS is unsupported
   fail: msg="OS {{ ansible_distribution }} {{ ansible_distribution_major_version }} is unsupported"
@@ -41,5 +41,5 @@
 - name: Start Icinga2 after install
   service:
     name: icinga2
-    enabled: yes
+    enabled: true
     state: started

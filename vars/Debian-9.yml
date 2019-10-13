@@ -6,6 +6,5 @@ icinga2_package_key: https://packages.icinga.com/icinga.key
 icinga2_deb_repos:
   - deb http://packages.icinga.com/debian icinga-stretch main
 
-
 __icinga2_user: nagios
 __icinga2_ping_binary: /bin/ping

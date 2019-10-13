@@ -1,3 +1,4 @@
+---
 - name: Create icinga ido pg_user
   postgresql_user:
     name: '{{ icinga2_ido_pg_user }}'
@@ -28,7 +29,7 @@
     PGHOST: '{{ icinga2_ido_pg_host }}'
     PGAPPNAME: '{{ icinga2_ido_pg_host }}'
   become_user: postgres
-  become: yes
+  become: true
   when: _icinga2_pg_ido_db.changed
   notify:
     - restart icinga2

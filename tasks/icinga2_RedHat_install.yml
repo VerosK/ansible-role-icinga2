@@ -37,6 +37,6 @@
 - name: Enable Icinga2 service
   service:
     name: icinga2
-    enabled: yes
+    enabled: true
     state: started    # FIXME: enable when requested
-  ignore_errors: yes
+  ignore_errors: true
