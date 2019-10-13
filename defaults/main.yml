@@ -4,14 +4,12 @@
 
 icinga2_yum_key: "http://packages.icinga.org/icinga.key"
 icinga2_apt_key: "http://packages.icinga.org/icinga.key"
-icinga2_debmon_key: "http://debmon.org/debmon/repo.key"
 
 _icinga_deb_release: 'icinga-{{ ansible_distribution_release }} main'
 
 icinga2_deb_repos:
   - repo: "deb http://packages.icinga.org/{{ ansible_distribution|lower }} {{_icinga_deb_release }}"
   - repo: "deb-src http://packages.icinga.org/{{ ansible_distribution|lower }} {{_icinga_deb_release }}"
-icinga2_debmon_repo: "deb http://debmon.org/debmon debmon-{{ ansible_distribution_release }} main"
 
 icinga2_requirements:
   - package: "gpg"
