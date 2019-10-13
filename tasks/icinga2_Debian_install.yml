@@ -16,14 +16,14 @@
     pkg: '{{ item.package }}'
     state: '{{ item.state|default("present") }}'
     update_cache: true
-    install_recommends: false
+    # install_recommends: false ?
   loop: '{{ icinga2_core_deb_packages }}'
 
 - name: Install Icinga2 postgres IDO on Debian OS family
   apt:
     name: '{{ item.package }}'
     state: '{{ item.state|default("present") }}'
-  loop: '{{ icinga2_ido_postgres_apt_packages }}'
+  loop: '{{ icinga2_ido_postgres_deb_packages }}'
   when: icinga2_ido_with_postgres
 
 - name: Start Icinga2

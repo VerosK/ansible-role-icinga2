@@ -43,7 +43,7 @@ icinga2_core_deb_packages:
 icinga2_ido_postgres_yum_packages:
   - package: "icinga2-ido-pgsql"
 
-icinga2_ido_postgres_apt_packages:
+icinga2_ido_postgres_deb_packages:
   - package: "icinga2-ido-pgsql"
 
 icinga2_config_dir: '/etc/icinga2/'
