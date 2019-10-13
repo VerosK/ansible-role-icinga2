@@ -1,5 +1,5 @@
 
-from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.basic import AnsibleModule, check_type_bool
 import os
 
 def main():
@@ -19,7 +19,9 @@ def main():
     config_mask = '%s/{}.conf' % params['icinga2_featuredir']
 
     for feature_name, should_enable in features.items():
-        if type(should_enable) != bool:
+        try:
+            should_enable = check_type_bool(should_enable) 
+        except TypeError:
             module.fail_json(
                 msg="Feature {} should be 'on' or 'off', but is set to '{}'".\
                             format(feature_name, should_enable))
