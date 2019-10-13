@@ -1,4 +1,6 @@
-# ansible-role-icinga2
+# ansible-role-icinga2 
+
+[![Build Status](https://travis-ci.org/VerosK/ansible-role-icinga2.svg?branch=master)](https://travis-ci.org/VerosK/ansible-role-icinga2)
 
 Ansible role to install Icinga2 daemon and plugins.  
 
