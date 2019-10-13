@@ -10,14 +10,11 @@ lint:
 platforms:
   - name: "molecule-${MOLECULE_DISTRO:-centos7}"
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-"sleep infinity"}
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-    cap_add:
-      - SYS_ADMIN
-      - SYS_TIME
 #  - name: ubuntu1804
 #    image: "ubuntu:18.04"
 #    env:
@@ -30,12 +27,10 @@ provisioner:
   lint:
     name: ansible-lint
   playbooks:
-    converge: playbook.yml
-
+    converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
+scenario:
+  name: default
 verifier:
   name: testinfra
   lint:
     name: flake8
-
-scenario:
-  name: default
