@@ -1,5 +1,5 @@
 
-from ansible.module_utils.basic import AnsibleModule, check_type_bool
+from ansible.module_utils.basic import AnsibleModule
 import os
 
 def main():
@@ -20,7 +20,7 @@ def main():
 
     for feature_name, should_enable in features.items():
         try:
-            should_enable = check_type_bool(should_enable) 
+            should_enable = module.boolean(should_enable)
         except TypeError:
             module.fail_json(
                 msg="Feature {} should be 'on' or 'off', but is set to '{}'".\
