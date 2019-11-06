@@ -99,6 +99,8 @@ icinga2_conf_global: |
   include "{{ icinga2_apiusers_conf }}"
   include <itl>
   include <plugins>
+  include <windows-plugins>
+  include <nscp>
   include "features-enabled/*.conf"
   # prepared for satellite setup.
   # include_recursive "conf.d"
