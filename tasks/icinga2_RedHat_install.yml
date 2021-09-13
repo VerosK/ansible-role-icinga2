@@ -9,6 +9,10 @@
   rpm_key:
     key: '{{ icinga2_apt_key }}'
     state: present
+  register: _yum
+  retries: 3
+  delay: 10
+  until: _yum is not failed
 
 - name: Get Icinga2 Yum Repo (Fedora)
   get_url:
