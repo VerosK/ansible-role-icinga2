@@ -2,8 +2,8 @@
 # defaults file for icinga2-ansible-no-ui
 # based on https://github.com/Icinga/icinga2-ansible/blob/master/icinga2-ansible-no-ui/defaults/main.yml
 
-icinga2_yum_key: "http://packages.icinga.org/icinga.key"
-icinga2_apt_key: "http://packages.icinga.org/icinga.key"
+icinga2_yum_key: "https://packages.icinga.com/icinga.key"
+icinga2_apt_key: "https://packages.icinga.com/icinga.key"
 
 _icinga_deb_release: 'icinga-{{ ansible_distribution_release }} main'
 
