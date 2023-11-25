@@ -20,22 +20,22 @@
     icinga2_ping_binary: '{{ icinga2_ping_binary|default(__icinga2_ping_binary) }}'
 
 - name: "Run Debian specific installation"
-  include: icinga2_Debian_install.yml
+  include_tasks: icinga2_Debian_install.yml
   when: ansible_os_family == 'Debian'
 
 - name: "Run Redhat specific installation"
-  include: icinga2_RedHat_install.yml
+  include_tasks: icinga2_RedHat_install.yml
   when: ansible_os_family == 'RedHat'
 
 - name: "Configure Icinga2"
-  include: icinga2_configure.yml
+  include_tasks: icinga2_configure.yml
 
 - name: "Configure Icinga2 IDO"
-  include: icinga2_setup_ido.yml
+  include_tasks: icinga2_setup_ido.yml
   when: icinga2_ido_with_postgres
 
 - name: "Fix ping capabilities to enable check_ping tests"
-  include: ping-capabilities.yml
+  include_tasks: ping-capabilities.yml
   when: icinga2_ping_fix_capabilities
 
 - name: Start Icinga2 after install
