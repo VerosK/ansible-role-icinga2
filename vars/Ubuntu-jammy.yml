@@ -1,0 +1,9 @@
+---
+icinga2_supported_os: true
+icinga2_package_key: https://packages.icinga.com/icinga.key
+
+icinga2_deb_repos:
+    - deb http://packages.icinga.com/ubuntu icinga-jammy main
+
+__icinga2_user: nagios
+__icinga2_ping_binary: /usr/bin/ping
